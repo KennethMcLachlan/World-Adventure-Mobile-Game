@@ -6,6 +6,7 @@ public class SideMenuScript : MonoBehaviour
 {
     [SerializeField] private GameObject _sideMenu;
     [SerializeField] private GameObject _gameSelectMenu;
+    [SerializeField] private GameObject _settingsMenu;
     
     private bool _menuIsActive = false;
 
@@ -54,5 +55,20 @@ public class SideMenuScript : MonoBehaviour
     public void SelectGame()
     {
         _gameSelectMenu.SetActive(true);
+    }
+
+    public void CloseGameSelect()
+    {
+        _gameSelectMenu.SetActive(false);
+    }
+
+    public void SettingsMenu()
+    {
+        _settingsMenu.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        _settingsMenu.SetActive(false);
     }
 }

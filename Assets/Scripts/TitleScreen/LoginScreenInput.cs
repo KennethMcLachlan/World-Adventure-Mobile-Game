@@ -11,7 +11,7 @@ public class LoginScreenInput : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _PlayerTitleShade;
     [SerializeField] private TextMeshProUGUI _textInstructions;
     [SerializeField] private TextMeshProUGUI _textInstructionsShade;
-    [SerializeField] private TMP_InputField _userInput;
+    [SerializeField] public TMP_InputField _userInput;
     [SerializeField] private Button _loginButton;
     [SerializeField] private GameObject _enterButton;
     [SerializeField] private GameObject _selectGameButton;
@@ -33,6 +33,7 @@ public class LoginScreenInput : MonoBehaviour
             _playerName = _userInput.text;
             _textInstructions.text = "Thanks " + _userInput.text + "!!";
             _textInstructionsShade.text = "Thanks " + _userInput.text + "!!";
+            PlayerPrefs.SetString("UserName", _userInput.text);
             _selectButtonText.text = "Play!";
             _enterButton.SetActive(false);
             _selectGameButton.SetActive(true);
@@ -51,4 +52,9 @@ public class LoginScreenInput : MonoBehaviour
         _playerTitle.text = "Select A Game";
         _PlayerTitleShade.text = "Select A Game";
     }
+
+    //public void SavePlayerName()
+    //{
+       
+    //}
 }

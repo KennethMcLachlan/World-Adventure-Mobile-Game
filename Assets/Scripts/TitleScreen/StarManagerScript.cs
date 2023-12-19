@@ -13,7 +13,7 @@ public class StarManagerScript : MonoBehaviour
 
     IEnumerator StartStarsRoutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         _stars.SetActive(true);
         yield return new WaitForSeconds(5f);
         Destroy(_stars);

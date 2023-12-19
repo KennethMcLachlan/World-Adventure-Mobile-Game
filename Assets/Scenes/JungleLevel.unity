@@ -2485,11 +2485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60249ad9fb248bb44b6233e8d0aed082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioMixer: {fileID: 24100000, guid: f9769f526160d6c4d86fbdfa5cdda0fa, type: 2}
-  _audioSlider: {fileID: 495698493}
-  _brightnessSlider: {fileID: 1510837459}
-  _blackOverlay: {fileID: 1071861325}
-  _nameHolder: {fileID: 110588204}
 --- !u!1 &388503120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3266,14 +3261,14 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1534743919}
   m_Direction: 0
   m_MinValue: -80
-  m_MaxValue: 20
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: -20
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 374103239}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 903407544}
+        m_TargetAssemblyTypeName: SideMenuScript, Assembly-CSharp
         m_MethodName: AudioLevels
         m_Mode: 1
         m_Arguments:
@@ -5128,6 +5123,12 @@ MonoBehaviour:
   _sideMenu: {fileID: 2018975992}
   _gameSelectMenu: {fileID: 768722250}
   _settingsMenu: {fileID: 2127643077}
+  _gameManager: {fileID: 374103239}
+  _audioMixer: {fileID: 24100000, guid: f9769f526160d6c4d86fbdfa5cdda0fa, type: 2}
+  _audioSlider: {fileID: 495698493}
+  _brightnessSlider: {fileID: 1510837459}
+  _blackOverlay: {fileID: 1071861325}
+  _nameHolder: {fileID: 110588204}
 --- !u!1 &905550771
 GameObject:
   m_ObjectHideFlags: 0
@@ -7902,8 +7903,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 374103239}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 903407544}
+        m_TargetAssemblyTypeName: SideMenuScript, Assembly-CSharp
         m_MethodName: BrightnessLevels
         m_Mode: 1
         m_Arguments:

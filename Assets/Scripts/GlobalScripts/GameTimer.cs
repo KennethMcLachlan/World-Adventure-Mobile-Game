@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,17 @@ public class GameTimer : MonoBehaviour
     private float _redBar;
     [SerializeField] private Slider _sliderTimer;
     [SerializeField] private Image _fillColor;
+    [SerializeField] private GameObject _gameOverScreen;
+    [SerializeField] private TextMeshProUGUI _gameOverInstructions;
+    [SerializeField] private TextMeshProUGUI _gameOverInstructionsBG;
+
+    [SerializeField] private int _scoreRound1;
+    [SerializeField] private int _scoreRound2;
+    [SerializeField] private int _scoreRound3;
+    [SerializeField] private int _finalScore;
+
+    private bool _roundIsActive;
+
 
     private void Start()
     {
@@ -17,7 +29,10 @@ public class GameTimer : MonoBehaviour
     }
     private void Update()
     {
-        TimerFunction();
+        if (_roundIsActive == true)
+        {
+            TimerFunction();
+        }
     }
 
     public void TimerFunction()
@@ -29,6 +44,10 @@ public class GameTimer : MonoBehaviour
         if (_remainingTime <= 0)
         {
             //End Game
+            Time.timeScale = 0f;
+            _gameOverScreen.SetActive(true);
+            _gameOverInstructions.text = "Ran out of time!";
+            _gameOverInstructionsBG.text = "Ran out of time!";
             Debug.Log("Timer has reached zero");
         }
 
@@ -39,4 +58,23 @@ public class GameTimer : MonoBehaviour
 
     }
 
+    public void ResetTimer()
+    {
+        _remainingTime = _maxTime;
+    }
+
+    public void SetRound()
+    {
+        _roundIsActive = true;
+    }
+
+    public void EndRound()
+    {
+        _roundIsActive = false;
+    }
+    public void TimerPoints(int points)
+    {
+        _sliderTimer.value = points;
+        _scoreRound1 = points * 5;
+    }
 }

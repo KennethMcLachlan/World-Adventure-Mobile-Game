@@ -15,6 +15,8 @@ public class DropZone : MonoBehaviour, IDropHandler
     private bool _roundTwoIsActive;
     private bool _roundThreeIsActive;
 
+    public Vector3 newPosition;
+
 
     private void Start()
     {
@@ -29,45 +31,38 @@ public class DropZone : MonoBehaviour, IDropHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
-        
-        if (_roundOneIsActive == true)
+        Debug.Log("OnDrop Bools: " + _roundOneIsActive + _roundTwoIsActive +  _roundThreeIsActive);
+        //Round One
+        if (_roundOneIsActive == true && eventData.pointerDrag.name == "Image04")
         {
-            if (eventData.pointerDrag.name == "Image04")
-            {
-                Debug.Log("I got number 4");
-                eventData.pointerDrag.GetComponent<DragScript>()._oldPosition = _thisImage.rectTransform.localPosition;
-                _jungleMechanics.RoundOneComplete();
-                _successSFX.Play();
-            }
+            newPosition = _thisImage.rectTransform.localPosition;
+            _jungleMechanics.RoundOneComplete();
+            _successSFX.Play();
+            
         }
 
-        if (_roundTwoIsActive == true)
+        //Round Two
+        if (_roundTwoIsActive == true && eventData.pointerDrag.name == "Image07")
         {
-
-            if (eventData.pointerDrag.name == "Image07")
-            {
-                Debug.Log("I got number 7");
-                eventData.pointerDrag.GetComponent<DragScript>()._oldPosition = _thisImage.rectTransform.localPosition;
-                _jungleMechanics.RoundTwoComplete();
-                _successSFX.Play();
-            }
+            newPosition = _thisImage.rectTransform.localPosition;
+            _jungleMechanics.RoundTwoComplete();
+            _successSFX.Play();
         }
 
-        if (_roundThreeIsActive == true)
+        //Round Three
+        if (_roundThreeIsActive == true && eventData.pointerDrag.name == "Image09")
         {
-            if (eventData.pointerDrag.name == "Image09")
-            {
-                Debug.Log("I got number 9");
-                eventData.pointerDrag.GetComponent<DragScript>()._oldPosition = _thisImage.rectTransform.localPosition;
-                _jungleMechanics.RoundThreeComplete();
-                _successSFX.Play();
-            }
+            newPosition = _thisImage.rectTransform.localPosition;
+            _jungleMechanics.RoundThreeComplete();
+            _successSFX.Play();
         }
 
-        //else
-        //{
-        //    _thisImage.rectTransform.localPosition = eventData.pointerDrag.GetComponent<DragScript>()._oldPosition;
-        //}
+        if (newPosition != null)
+        {
+            eventData.pointerDrag.transform.position = newPosition;
+            Debug.Log("newPosition is not null");
+        }
+
     }
 
     public void SetRoundOne()

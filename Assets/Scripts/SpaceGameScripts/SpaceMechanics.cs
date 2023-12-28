@@ -19,14 +19,8 @@ public class SpaceMechanics : MonoBehaviour
     [SerializeField] private GameObject _pipeGroup02;
     [SerializeField] private GameObject _pipeGroup03;
     [SerializeField] private GameObject _gameOverScreen;
-    [SerializeField] private Animator _textBox;
 
     public GameTimer _gameTimer;
-
-    private bool _gameIsActive;
-    private bool _roundOneActive;
-    private bool _roundTwoActive;
-    private bool _roundThreeActive;
 
     private bool _lockPipe0;
     private bool _lockPipe1;
@@ -42,7 +36,7 @@ public class SpaceMechanics : MonoBehaviour
     private bool _lockPipe11;
 
     [SerializeField] private AudioSource _successSFX;
-
+    [SerializeField] private Animator _textBox;
 
     [SerializeField] private Button _rotateLeft;
     [SerializeField] private Button _rotateRight;
@@ -50,6 +44,7 @@ public class SpaceMechanics : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _instructionText;
     [SerializeField] private TextMeshProUGUI _gameOverInstructions;
     [SerializeField] private TextMeshProUGUI _gameOverInstructionsBG;
+
     private float _fiveSeconds = 5f;
     private float _threeSeconds = 3f;
 
@@ -62,10 +57,6 @@ public class SpaceMechanics : MonoBehaviour
         StartCoroutine(IntroRoutine());
     }
 
-    void Update()
-    {
-        
-    }
     public void AssignPipe(int id)
     {
         _activePipeID = id;
@@ -152,7 +143,6 @@ public class SpaceMechanics : MonoBehaviour
             _lockPipe11 = true;
         }
 
-
         if (_lockPipe0 == true && _lockPipe1 == true && _lockPipe2 == true)
         {
             //Enable Round 2
@@ -188,7 +178,6 @@ public class SpaceMechanics : MonoBehaviour
             _lockPipe11 = false;
             StartCoroutine(EndSpaceGameRoutine());
         }
-
     }
 
     IEnumerator StarsRoutine()
@@ -218,8 +207,6 @@ public class SpaceMechanics : MonoBehaviour
         _roundOne.SetActive(false);
         _pipeGroup01.SetActive(true);
         ResetRoundTimer();
-        _gameIsActive = true;
-        _roundOneActive = true;
 
         yield return new WaitForSeconds(2f);
         _stars.SetActive(false);
@@ -248,7 +235,6 @@ public class SpaceMechanics : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         _stars.SetActive(false);
-
     }
 
     IEnumerator RoundThreeRoutine()
@@ -274,7 +260,6 @@ public class SpaceMechanics : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         _stars.SetActive(false);
-        _gameIsActive = false;
     }
 
     IEnumerator EndSpaceGameRoutine()
@@ -295,7 +280,6 @@ public class SpaceMechanics : MonoBehaviour
         _gameOverScreen.SetActive(true);
         _gameOverInstructions.text = "Great Job! You saved the day!";
         _gameOverInstructionsBG.text = "Great Job! You saved the day!";
-
     }
 
     private void ResetRoundTimer()

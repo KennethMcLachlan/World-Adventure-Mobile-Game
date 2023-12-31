@@ -30,14 +30,12 @@ public class JungleMechanics : MonoBehaviour
 
     [SerializeField] private Animator _textBox;
 
-    private GameTimer _gameTimer;
     [SerializeField] private DropZone _dropZone;
 
+    private GameTimer _gameTimer;
 
     private float _fiveSeconds = 5f;
     private float _threeSeconds = 3f;
-    
-
 
     void Start()
     {
@@ -51,11 +49,6 @@ public class JungleMechanics : MonoBehaviour
         }
 
         StartCoroutine(IntroRoutine());
-    }
-
-    void Update()
-    {
-        
     }
 
     IEnumerator IntroRoutine()

@@ -12,18 +12,21 @@ public class LoginScreenInput : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textInstructions;
     [SerializeField] private TextMeshProUGUI _textInstructionsShade;
     [SerializeField] public TMP_InputField _userInput;
-    [SerializeField] private Button _loginButton;
-    [SerializeField] private GameObject _enterButton;
-    [SerializeField] private GameObject _selectGameButton;
     [SerializeField] private TextMeshProUGUI _selectButtonText;
     [SerializeField] private TextMeshProUGUI _buttonText;
-    [SerializeField] private string _playerName;
+
+    [SerializeField] private GameObject _enterButton;
+    [SerializeField] private GameObject _selectGameButton;
     [SerializeField] private GameObject _selectGame;
+
+    [SerializeField] private Button _loginButton;
+
+    [SerializeField] private string _playerName;
 
     private void Start()
     {
         _textInstructions.text = "Please enter your Player name";
-        _textInstructionsShade.text = "Please enter your Player name";
+        _textInstructionsShade.text = _textInstructions.text;
     }
 
     public void CreatePlayerName()
@@ -32,7 +35,7 @@ public class LoginScreenInput : MonoBehaviour
         {
             _playerName = _userInput.text;
             _textInstructions.text = "Thanks " + _userInput.text + "!!";
-            _textInstructionsShade.text = "Thanks " + _userInput.text + "!!";
+            _textInstructionsShade.text = _textInstructions.text;
             PlayerPrefs.SetString("UserName", _userInput.text);
             _selectButtonText.text = "Play!";
             _enterButton.SetActive(false);
@@ -41,7 +44,7 @@ public class LoginScreenInput : MonoBehaviour
         else
         {
             _textInstructions.text = "Sorry, the Player Name must be between 3 and 10 characters...";
-            _textInstructionsShade.text = "Sorry, the Player Name must be between 3 and 10 characters...";
+            _textInstructionsShade.text = _textInstructions.text;
             _userInput.text = "";
         }
     }
@@ -50,11 +53,7 @@ public class LoginScreenInput : MonoBehaviour
     {
         _selectGame.SetActive(true);
         _playerTitle.text = "Select A Game";
-        _PlayerTitleShade.text = "Select A Game";
+        _PlayerTitleShade.text = _playerTitle.text;
     }
 
-    //public void SavePlayerName()
-    //{
-       
-    //}
 }

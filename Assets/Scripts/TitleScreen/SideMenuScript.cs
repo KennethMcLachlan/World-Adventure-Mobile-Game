@@ -10,6 +10,7 @@ public class SideMenuScript : MonoBehaviour
     [SerializeField] private GameObject _sideMenu;
     [SerializeField] private GameObject _gameSelectMenu;
     [SerializeField] private GameObject _settingsMenu;
+    [SerializeField] private GameObject _scoreBoard;
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private Slider _audioSlider;
@@ -119,5 +120,13 @@ public class SideMenuScript : MonoBehaviour
         _nameHolder.text = PlayerPrefs.GetString("UserName");
     }
 
+    public void ScoreBoard()
+    {
+        _scoreBoard.SetActive(true);
+    }
 
+    public void CloseScoreBoard()
+    {
+        _scoreBoard.SetActive(false);
+    }
 }

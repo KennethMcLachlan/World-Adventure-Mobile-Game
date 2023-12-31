@@ -14,21 +14,25 @@ public class GameManager : MonoBehaviour
     }
     public void TitleScene()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("TitleScene");
     }
 
     public void SpaceScene()
     {
+        Time .timeScale = 1.0f;
         SceneManager.LoadScene("SpaceLevel");
     }
 
     public void JungleScene()
     {
+        Time .timeScale = 1.0f;
         SceneManager.LoadScene("JungleLevel");
     }
 
     public void OceanScene()
     {
+        Time .timeScale = 1.0f;
         SceneManager.LoadScene("OceanLevel");
     }
 

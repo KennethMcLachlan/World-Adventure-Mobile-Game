@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 
 public class DropZone : MonoBehaviour, IDropHandler
 {
-    private JungleMechanics _jungleMechanics;
     [SerializeField] private AudioSource _successSFX;
+
+    private JungleMechanics _jungleMechanics;
 
     private Image _thisImage;
 
@@ -16,7 +17,6 @@ public class DropZone : MonoBehaviour, IDropHandler
     private bool _roundThreeIsActive;
 
     public Vector3 newPosition;
-
 
     private void Start()
     {

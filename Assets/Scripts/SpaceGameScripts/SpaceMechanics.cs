@@ -21,6 +21,7 @@ public class SpaceMechanics : MonoBehaviour
     [SerializeField] private GameObject _gameOverScreen;
 
     public GameTimer _gameTimer;
+    public ScoreBoardBehavior _scoreBoard;
 
     private bool _lockPipe0;
     private bool _lockPipe1;
@@ -44,15 +45,39 @@ public class SpaceMechanics : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _instructionText;
     [SerializeField] private TextMeshProUGUI _gameOverInstructions;
     [SerializeField] private TextMeshProUGUI _gameOverInstructionsBG;
+    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _scoreTextBG;
+
+    [SerializeField] private TMP_Text _gameOverScore;
 
     private float _fiveSeconds = 5f;
     private float _threeSeconds = 3f;
+
+    [SerializeField] private int _scoreTotal = 0;
 
     void Start()
     {
         _isPipeLocked = new bool[_pipeArray.Length];
         _gameTimer = GameObject.Find("TimerManager").GetComponent<GameTimer>();
+
+        if (_gameTimer == null)
+        {
+            Debug.Log("Game Timer is NULL");
+        }
+
+        _scoreBoard = GameObject.Find("ScoreBoardManager").GetComponent<ScoreBoardBehavior>();
+
+        if (_scoreBoard == null)
+        {
+            Debug.Log("Scoreboard is NULL");
+        }
+
         _textBox = GameObject.Find("Image_TextBox").GetComponent<Animator>();
+
+        if (_textBox == null)
+        {
+            Debug.Log("Text Box is NULL");
+        }
         _successSFX = gameObject.GetComponent<AudioSource>();
         StartCoroutine(IntroRoutine());
     }
@@ -280,11 +305,24 @@ public class SpaceMechanics : MonoBehaviour
         _gameOverScreen.SetActive(true);
         _gameOverInstructions.text = "Great Job! You saved the day!";
         _gameOverInstructionsBG.text = "Great Job! You saved the day!";
+        _scoreText.text = "Score: " + _scoreTotal.ToString();
+        _scoreTextBG.text = "Score: " + _scoreTotal.ToString();
+        SendScore(_scoreTotal);
+        _scoreBoard.OverallScore();
+
     }
 
     private void ResetRoundTimer()
     {
+        _scoreTotal += _gameTimer.TimerPoints();
         _gameTimer.ResetTimer();
         _gameTimer.SetRound();
+    }
+
+    //Send the score from this game to the Scoreboard script
+    public void SendScore(int score)
+    {
+        _scoreTotal += score;
+        _scoreBoard.SpaceScore(score);
     }
 }

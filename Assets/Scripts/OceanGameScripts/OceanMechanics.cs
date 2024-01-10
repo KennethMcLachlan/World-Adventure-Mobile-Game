@@ -17,6 +17,8 @@ public class OceanMechanics : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textInstructionsBG;
     [SerializeField] private TextMeshProUGUI _gameOverInstructions;
     [SerializeField] private TextMeshProUGUI _gameOverInstructionsBG;
+    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _scoreTextBG;
 
     [SerializeField] private Animator _textBox;
     [SerializeField] private AudioSource _successSFX;
@@ -30,6 +32,7 @@ public class OceanMechanics : MonoBehaviour
     private float _threeSeconds = 3f;
 
     private GameTimer _gameTimer;
+    public ScoreBoardBehavior _scoreBoard;
 
     private bool _firstGuess;
     private bool _secondGuess;
@@ -40,6 +43,8 @@ public class OceanMechanics : MonoBehaviour
 
     private int _firstGuessIndex;
     private int _secondGuessIndex;
+
+    private int _scoreTotal;
 
     private string _firstGuessPuzzle, _secondGuessPuzzle;
 
@@ -55,6 +60,13 @@ public class OceanMechanics : MonoBehaviour
         {
             Debug.Log("Timer is NULL!");
         }
+
+        _scoreBoard = GameObject.Find("ScoreBoardManager").GetComponent<ScoreBoardBehavior>();
+        if (_scoreBoard == null)
+        {
+            Debug.Log("Scoreboard is NULL");
+        }
+
         StartCoroutine(IntroRoutine());
     }
 
@@ -225,6 +237,8 @@ public class OceanMechanics : MonoBehaviour
     IEnumerator ExitRoutine()
     {
         _gameTimer.EndRound();
+
+        _scoreTotal += _gameTimer.TimerPoints();
         _greatJobTitle.SetActive(true);
         _stars.SetActive(true);
         _textBox.SetBool("BoxIsActive", true);
@@ -248,6 +262,16 @@ public class OceanMechanics : MonoBehaviour
         _textInstructionsBG.text = _textInstructions.text;
         _gameOverInstructions.text = "You are a master of the deep blue sea!";
         _gameOverInstructionsBG.text = _gameOverInstructions.text;
+        _scoreText.text = "Score: " + _scoreTotal.ToString();
+        _scoreTextBG.text = _scoreText.text;
+        SendScore(_scoreTotal);
+        _scoreBoard.OverallScore();
 
+    }
+
+    public void SendScore(int score)
+    {
+        _scoreTotal += score;
+        _scoreBoard.OceanScore(_scoreTotal);
     }
 }

@@ -4585,6 +4585,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186136976}
   m_CullTransparentMesh: 1
+--- !u!1 &1206259916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1206259917}
+  - component: {fileID: 1206259918}
+  m_Layer: 0
+  m_Name: ScoreBoardManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1206259917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206259916}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -356.95547, y: -102.93292, z: -21.325916}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1450372630}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1206259918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206259916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59d284331a323a4a8afa1ee38b98766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _topScore: {fileID: 7831268791121096541}
+  _overallScore: {fileID: 7831268791342827274}
+  _spaceScore: {fileID: 7831268791923502618}
+  _jungleScore: {fileID: 7831268791567010400}
+  _oceanScore: {fileID: 7831268791543652340}
+  _topPlayerName: {fileID: 7831268790152299304}
+  _currentPlayerName: {fileID: 7831268791300853328}
 --- !u!114 &1207473323 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5207951253253428774, guid: f226b6bd700d45a4796a2cf8a1cbee13, type: 3}
@@ -5582,6 +5633,7 @@ Transform:
   - {fileID: 1224174218}
   - {fileID: 417576573}
   - {fileID: 1059032166}
+  - {fileID: 1206259917}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5614,6 +5666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60249ad9fb248bb44b6233e8d0aed082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreBoardManager: {fileID: 0}
 --- !u!4 &1462378228
 Transform:
   m_ObjectHideFlags: 0
@@ -9034,7 +9087,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10000
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}
   m_sharedMaterial: {fileID: -9088835823086698252, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}
@@ -9380,7 +9433,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10000
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}
   m_sharedMaterial: {fileID: -9088835823086698252, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}
@@ -9785,7 +9838,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Top Score:'
+  m_text: Top Score
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}
   m_sharedMaterial: {fileID: -9088835823086698252, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}
@@ -9920,7 +9973,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10000
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}
   m_sharedMaterial: {fileID: -9088835823086698252, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}
@@ -10017,7 +10070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10000
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}
   m_sharedMaterial: {fileID: -9088835823086698252, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}
@@ -10242,7 +10295,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10000
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}
   m_sharedMaterial: {fileID: -9088835823086698252, guid: 42430efee0ec7854cb4d0de529a85ef2, type: 2}

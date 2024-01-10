@@ -15,6 +15,8 @@ public class JungleMechanics : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textInstructions;
     [SerializeField] private TextMeshProUGUI _gameOverInstructions;
     [SerializeField] private TextMeshProUGUI _gameOverInstructionsBG;
+    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _scoreTextBG;
 
     [SerializeField] private GameObject _stars;
     [SerializeField] private GameObject _round01;
@@ -33,16 +35,26 @@ public class JungleMechanics : MonoBehaviour
     [SerializeField] private DropZone _dropZone;
 
     private GameTimer _gameTimer;
+    public ScoreBoardBehavior _scoreBoard;
 
     private float _fiveSeconds = 5f;
     private float _threeSeconds = 3f;
+
+    [SerializeField] private int _scoreTotal = 0;
 
     void Start()
     {
         _gameTimer = GameObject.Find("TimerManager").GetComponent<GameTimer>();
         _textBox = GameObject.Find("Image_TextBox").GetComponent<Animator>();
-        _dropZone = GameObject.Find("Image_DropZone").GetComponent<DropZone>();
 
+        _scoreBoard = GameObject.Find("ScoreBoardManager").GetComponent<ScoreBoardBehavior>();
+        if (_scoreBoard == null)
+        {
+            Debug.Log("Scoreboard Manager is NULL");
+        }
+
+
+        _dropZone = GameObject.Find("Image_DropZone").GetComponent<DropZone>();
         if (_dropZone == null)
         {
             Debug.Log("DropZone is null");
@@ -173,7 +185,10 @@ public class JungleMechanics : MonoBehaviour
         _gameOverScreen.SetActive(true);
         _gameOverInstructions.text = "Math is fun!";
         _gameOverInstructionsBG.text = _gameOverInstructions.text;
-
+        _scoreText.text = "Score: " + _scoreTotal.ToString();
+        _scoreTextBG.text = _scoreText.text;
+        SendScore(_scoreTotal);
+        _scoreBoard.OverallScore();
     }
 
     public void RoundOneComplete()
@@ -193,7 +208,15 @@ public class JungleMechanics : MonoBehaviour
 
     private void ResetRoundTimer()
     {
+        _scoreTotal += _gameTimer.TimerPoints();
         _gameTimer.ResetTimer();
         _gameTimer.SetRound();
     }
+
+    public void SendScore(int score)
+    {
+        _scoreTotal += score;
+        _scoreBoard.JungleScore(score);
+    }
+
 }

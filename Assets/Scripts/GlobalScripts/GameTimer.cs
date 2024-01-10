@@ -73,9 +73,12 @@ public class GameTimer : MonoBehaviour
     {
         _roundIsActive = false;
     }
-    public void TimerPoints(int points)
+
+    public int TimerPoints()
     {
-        _sliderTimer.value = points;
-        _scoreRound1 = points * 5;
+        float points = 0;
+        points = _sliderTimer.value;
+        int score = Mathf.CeilToInt (points * 5f);
+        return score;
     }
 }

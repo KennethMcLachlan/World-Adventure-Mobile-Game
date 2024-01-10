@@ -8,6 +8,18 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public ScoreBoardBehavior _scoreBoardManager;
+
+    private void Start()
+    {
+        _scoreBoardManager = GameObject.Find("ScoreBoardManager").GetComponent<ScoreBoardBehavior>();
+        if (_scoreBoardManager == null)
+        {
+            Debug.Log("Scoreboard Manager is NULL");
+        }
+
+        //_scoreBoardManager.ResetScores();
+    }
     public void QuitApplication()
     {
         Application.Quit();
@@ -15,6 +27,7 @@ public class GameManager : MonoBehaviour
     public void TitleScene()
     {
         Time.timeScale = 1.0f;
+        _scoreBoardManager.ResetScores();
         SceneManager.LoadScene("TitleScene");
     }
 

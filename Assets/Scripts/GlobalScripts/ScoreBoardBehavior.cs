@@ -23,13 +23,18 @@ public class ScoreBoardBehavior : MonoBehaviour
 
     private void Awake()
     {
-        _spaceScore.text = PlayerPrefs.GetString("SpaceScore", "00");
-        _jungleScore.text = PlayerPrefs.GetString("JungleScore", "00");
-        _oceanScore.text = PlayerPrefs.GetString("OceanScore", "00");
-        _topPlayerName.text = PlayerPrefs.GetString("TopScore", "");
-        _currentPlayerName.text = PlayerPrefs.GetString("UserName", "");
+        _spaceScore.text = PlayerPrefs.GetString("SpaceScore");
+        _jungleScore.text = PlayerPrefs.GetString("JungleScore");
+        _oceanScore.text = PlayerPrefs.GetString("OceanScore");
+        _topPlayerName.text = PlayerPrefs.GetString("TopScore");
+        _currentPlayerName.text = PlayerPrefs.GetString("UserName");
 
-        
+        PlayerPrefs.SetString("SpaceScore", _spaceScore.text);
+        PlayerPrefs.SetString("JungleScore", _jungleScore.text);
+        PlayerPrefs.SetString("OceanScore", _oceanScore.text);
+        PlayerPrefs.SetString("TopScore", _topPlayerName.text);
+
+
     }
 
     private void Update()
@@ -85,6 +90,7 @@ public class ScoreBoardBehavior : MonoBehaviour
             _topScoreTotal = _overallScoreTotal;
             PlayerPrefs.SetString("TopScore", _topScore.text);
             PlayerPrefs.SetInt("TopScore", _topScoreTotal);
+            _currentPlayerName = _topPlayerName;
             PlayerPrefs.Save();
         }
     }

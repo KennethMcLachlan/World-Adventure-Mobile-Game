@@ -45,7 +45,16 @@ public class JungleMechanics : MonoBehaviour
     void Start()
     {
         _gameTimer = GameObject.Find("TimerManager").GetComponent<GameTimer>();
+        if (_gameTimer == null)
+        {
+            Debug.Log("Game Timer is NULL");
+        }
+
         _textBox = GameObject.Find("Image_TextBox").GetComponent<Animator>();
+        if (_textBox == null)
+        {
+            Debug.Log("Text Box is NULL");
+        }
 
         _scoreBoard = GameObject.Find("ScoreBoardManager").GetComponent<ScoreBoardBehavior>();
         if (_scoreBoard == null)
@@ -187,6 +196,7 @@ public class JungleMechanics : MonoBehaviour
         _gameOverInstructionsBG.text = _gameOverInstructions.text;
         _scoreText.text = "Score: " + _scoreTotal.ToString();
         _scoreTextBG.text = _scoreText.text;
+        
         SendScore(_scoreTotal);
         _scoreBoard.OverallScore();
     }

@@ -307,6 +307,7 @@ public class SpaceMechanics : MonoBehaviour
         _gameOverInstructionsBG.text = "Great Job! You saved the day!";
         _scoreText.text = "Score: " + _scoreTotal.ToString();
         _scoreTextBG.text = "Score: " + _scoreTotal.ToString();
+        
         SendScore(_scoreTotal);
         _scoreBoard.OverallScore();
 

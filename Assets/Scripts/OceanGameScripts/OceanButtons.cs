@@ -6,9 +6,7 @@ using UnityEngine.EventSystems;
 
 public class OceanButtons : MonoBehaviour
 {
-
     [SerializeField] private GameObject[] _shells;
-
     [SerializeField] private Transform _shellLayout;
 
     private void Awake()

@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Scoreboard Manager is NULL");
         }
-
-        //_scoreBoardManager.ResetScores();
     }
     public void QuitApplication()
     {

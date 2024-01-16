@@ -19,7 +19,6 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private int _scoreRound2;
     [SerializeField] private int _scoreRound3;
     [SerializeField] private int _finalScore;
-    [SerializeField] private int _scoreMultiplier = 5;
 
     private bool _roundIsActive;
 

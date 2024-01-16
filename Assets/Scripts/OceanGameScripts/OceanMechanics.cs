@@ -51,7 +51,6 @@ public class OceanMechanics : MonoBehaviour
     private void Awake()
     {
         puzzles = Resources.LoadAll<Sprite>("Ocean_MemoryGameCritters-01");
-        //shellImage = Resources.LoadAll<Sprite>("Ocean_ClamShells-01");
     }
     private void Start()
     {
@@ -180,17 +179,6 @@ public class OceanMechanics : MonoBehaviour
         }
     }
 
-    //private void ShuffleButtons(List<Sprite> list)
-    //{
-    //    for (int i = 0; i < list.Count; i++)
-    //    {
-    //        Sprite temp = list[i];
-    //        int randomIndex = Random.Range(i, list.Count);
-    //        list[i] = list[randomIndex];
-    //        list[randomIndex] = temp;
-    //    }
-    //}
-
     IEnumerator IntroRoutine()
     {
         _stars.SetActive(true);
@@ -266,7 +254,6 @@ public class OceanMechanics : MonoBehaviour
         _scoreTextBG.text = _scoreText.text;
         SendScore(_scoreTotal);
         _scoreBoard.OverallScore();
-
     }
 
     public void SendScore(int score)

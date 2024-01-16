@@ -21,6 +21,7 @@ public class DropZone : MonoBehaviour, IDropHandler
     private void Start()
     {
         _thisImage = GetComponent<Image>();
+
         _jungleMechanics = GameObject.Find("JungleMechanicsManager").GetComponent<JungleMechanics>();
         if (_jungleMechanics == null)
         {
@@ -31,7 +32,6 @@ public class DropZone : MonoBehaviour, IDropHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("OnDrop Bools: " + _roundOneIsActive + _roundTwoIsActive +  _roundThreeIsActive);
         //Round One
         if (_roundOneIsActive == true && eventData.pointerDrag.name == "Image04")
         {
@@ -60,7 +60,6 @@ public class DropZone : MonoBehaviour, IDropHandler
         if (newPosition != null)
         {
             eventData.pointerDrag.transform.position = newPosition;
-            Debug.Log("newPosition is not null");
         }
 
     }

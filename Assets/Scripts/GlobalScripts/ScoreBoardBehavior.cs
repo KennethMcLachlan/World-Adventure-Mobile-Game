@@ -33,6 +33,7 @@ public class ScoreBoardBehavior : MonoBehaviour
         PlayerPrefs.SetString("JungleScore", _jungleScore.text);
         PlayerPrefs.SetString("OceanScore", _oceanScore.text);
         PlayerPrefs.SetString("TopScore", _topPlayerName.text);
+        PlayerPrefs.Save();
 
 
     }
